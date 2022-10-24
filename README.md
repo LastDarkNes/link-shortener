@@ -1,4 +1,4 @@
-# Blog
+# CuteCut
 
 This is a my simple pet-project that I used to learn features of Django, DRF, PostgreSQL and Docker.
 

@@ -1,0 +1,62 @@
+#!/bin/bash
+
+set -e
+
+export WORKDIR=$(cd $(dirname $0) && pwd)
+. "$WORKDIR/bin/common"
+
+cli_help() {
+  cli_name=${0##*/}
+  echo "
+Usage: $cli_name [command]
+Commands:
+  i, init         Inits dev environment
+  u, up           Runs dev environment
+  d, down         Stops dev environment
+  r, restart      Restarts dev environment
+  l, logs         Shows logs of backend container
+  bash, bash      Ssh to backend container
+  m, manage       Runs manage.py command
+  b, build        Builds vitamin docker image
+  *               Shows help
+"
+  exit 1
+}
+
+pushd "$WORKDIR" > /dev/null
+
+case "$1" in
+  u|up)
+    docker-compose up -d
+    ;;
+  d|down)
+    docker-compose stop
+    ;;
+  r|restart)
+    docker-compose restart
+    ;;
+  l|logs)
+    docker-compose logs back
+    ;;
+  bash|bash)
+    docker-compose exec back bash
+    ;;
+  m|manage)
+    docker-compose exec back python manage.py "${@:2}"
+    ;;
+  f|front)
+    docker-compose exec front "${@:2}"
+    ;;
+  i|init)
+    docker-compose up -d --build
+    docker-compose exec back python manage.py migrate
+    ;;
+  b|build)
+    docker-compose build
+    ;;
+  *)
+    cli_help
+    ;;
+esac
+
+popd > /dev/null

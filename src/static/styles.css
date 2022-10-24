@@ -1,0 +1,43 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family: 'Permanent Marker', cursive;
+  text-align: center;
+}
+
+body {
+  background-image: url(bg.png);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+#CuteCut {
+  font-size: 200px;
+  text-shadow: 13px 14px 4px rgba(0, 0, 0, 0.25);
+}
+
+#tagline {
+  font-size: 64px;
+}
+
+#Lfield {
+  margin-top: 133px;
+  font-size: 34px;
+  border-radius: 59px;
+  width: 1118px;
+}
+
+#submit {
+  margin-top: 18px;
+  font-size: 40px;
+  border-radius: 59px;
+  width: 1118px;
+  background-color: #8468D2;
+}
+
+.linktext {
+  margin-top: 20px;
+  font-size: 36px;
+}

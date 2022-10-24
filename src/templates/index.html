@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link type = "text/css" rel = "stylesheet" href = "{% static "styles.css" %}">
+    <title></title>
+  </head>
+  <body>
+    <p id="CuteCut">CuteCut</p>
+    <p id="tagline">Share your links better!</p>
+
+    <form class="" action="{% url "main_page" %}" method="post">
+
+      {% csrf_token %}
+      <input id="Lfield" type="text" name="link" placeholder="Enter link"> <br>
+      <input id="submit" type="submit" name="" value="make it shorter!">
+
+      {% if short_link != None %}
+        <p class="linktext" >Your new:</p>
+
+        <p class="linktext" >{{ short_link }}</p>
+      {% endif %}
+
+    </form>
+  </body>
+</html>
